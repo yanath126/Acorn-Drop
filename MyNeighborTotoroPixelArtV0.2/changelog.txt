@@ -1,0 +1,4 @@
+Totoro Characters changes
+- V 0.2
+- 2024-02-09
+Added jumping animation for it.
