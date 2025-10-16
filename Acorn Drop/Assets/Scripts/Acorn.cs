@@ -13,4 +13,21 @@ public class Acornn : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Totoro")
+        {
+            Destroy(gameObject);
+            //move on to next level
+        }
+        else if (collision.gameObject.tag == "Respawn")
+        {
+            //restart the game
+        }
+        else
+        {
+            //do nothing
+        }
+    }
 }
