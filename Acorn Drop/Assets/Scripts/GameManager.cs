@@ -40,7 +40,11 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    
+
+    void checkSwipe (Vector3 start, Vector3 end)
+    {
+        
+    }
     
     void destroyVines(GameObject gameObject)
     {
