@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             transform.position = new Vector3(ImousePosition.x, ImousePosition.y, 0);
 
             //Debug.Log("Dragging");
-            //cut
+            //check for a swipe and destroy the vines
             ImousePosition = currentMousePosition;
         }
 
@@ -39,28 +39,6 @@ public class GameManager : MonoBehaviour
             isDragging = false;
         }
 
-    }
-
-    void checkSwipe (Vector3 start, Vector3 end)
-    {
-        
-    }
-    
-    void destroyVines(GameObject gameObject)
-    {
-        joint.gameObject.GetComponent<HingeJoint2D>();
-        if (joint != null)
-        {
-            Destroy(joint);
-        }
-
-        Destroy(gameObject);
-        //destroy the rest of the rope
-        Rigidbody2D rgb2 = gameObject.GetComponent<Rigidbody2D>();
-        if (rgb2 != null)
-        {
-            //destroy the surrounding vine links
-        }
     }
 
 
