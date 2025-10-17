@@ -1,9 +1,11 @@
-using System.Numerics;
+using System.Runtime.CompilerServices;
+using Unity.Collections;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] GameObject cutterPrefab;
     bool isDragging = false;
     Vector3 ImousePosition;
     HingeJoint2D joint;
@@ -31,16 +33,24 @@ public class GameManager : MonoBehaviour
 
             //Debug.Log("Dragging");
             //check for a swipe and destroy the vines
+            spawnCutter(ImousePosition, currentMousePosition);
             ImousePosition = currentMousePosition;
         }
 
         if (Input.GetButtonUp("Fire1")) //after mouse click releases
         {
+
             isDragging = false;
         }
-
+        
     }
-
+    void spawnCutter(Vector3 start, Vector3 end)
+        {
+            GameObject cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity);
+            EdgeCollider2D edge = cutter.GetComponent<EdgeCollider2D>();
+            edge.points = new Vector2[]{start, end};
+            
+        }
 
 
 
