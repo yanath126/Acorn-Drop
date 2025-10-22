@@ -10,10 +10,15 @@ public class GameManager : MonoBehaviour
     bool isDragging = false;
     Vector3 ImousePosition;
     HingeJoint2D joint;
-    bool LevelLost = false;
+    
     int level = 1;
     public static GameManager instance;
+    public bool LevelLost = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         
@@ -22,9 +27,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(LevelLost)
+        if(LevelLost == true)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // Debug.Log("Lost");
+            // Debug.Break();
+            LevelLost = false;
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
         {
@@ -69,6 +77,7 @@ public class GameManager : MonoBehaviour
     public void nextLevel(int number)
     {
         level += number;
+        //SceneManager.LoadScene(2);
     }
 
 
