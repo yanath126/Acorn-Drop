@@ -2,6 +2,7 @@ using System.Runtime.CompilerServices;
 using Unity.Collections;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class GameManager : MonoBehaviour
     bool isDragging = false;
     Vector3 ImousePosition;
     HingeJoint2D joint;
+    bool LevelLost = false;
+    int level = 1;
+    public static GameManager instance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +22,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(LevelLost)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
         {
             ImousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -45,13 +53,23 @@ public class GameManager : MonoBehaviour
         
     }
     void spawnCutter(Vector3 start, Vector3 end)
-        {
-            GameObject cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity);
-            EdgeCollider2D edge = cutter.GetComponent<EdgeCollider2D>();
-            edge.points = new Vector2[]{start, end};
-            
-        }
+    {
+        GameObject cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity);
+        EdgeCollider2D edge = cutter.GetComponent<EdgeCollider2D>();
+        edge.points = new Vector2[] { start, end };
 
+    }
+
+    public void restartLevel()
+    {
+        LevelLost = true;
+
+    }
+
+    public void nextLevel(int number)
+    {
+        level += number;
+    }
 
 
 
