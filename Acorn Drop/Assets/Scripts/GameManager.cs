@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     bool isDragging = false;
     Vector3 ImousePosition;
     HingeJoint2D joint;
+
+    int butterflyScore = 0;
     
-    int level = 1;
+    int level = 0;
     public static GameManager instance;
     public bool LevelLost = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -77,7 +79,12 @@ public class GameManager : MonoBehaviour
     public void nextLevel(int number)
     {
         level += number;
-        //SceneManager.LoadScene(2);
+        Debug.Log(level);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
+    }
+    public void AddButterfly()
+    {
+        butterflyScore++;
     }
 
 
