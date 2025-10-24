@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
+        SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
     void Start()
     {
