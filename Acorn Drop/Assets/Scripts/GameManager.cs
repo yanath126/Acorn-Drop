@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     int butterflyScore = 0;
     
-    int level = 0;
+    [SerializeField] int level = 0;
     public static GameManager instance;
     public bool LevelLost = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
     void Start()
     {
@@ -82,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         level += number;
         Debug.Log(level);
-        SceneManager.LoadScene(level, LoadSceneMode.Single);
+        SceneManager.LoadScene(level);
     }
     public void AddButterfly()
     {
