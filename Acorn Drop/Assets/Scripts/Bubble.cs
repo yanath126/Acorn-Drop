@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    [SerializeField] float floatForce = 5f;
+    [SerializeField] float floatForce = 50f;
     bool isAttached = false;
     [SerializeField] Rigidbody2D acornrb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,7 +16,7 @@ public class Bubble : MonoBehaviour
     {
         if (isAttached && acornrb != null)
         {
-            acornrb.AddForce(Vector2.up * floatForce * Time.deltaTime, ForceMode2D.Force);
+            acornrb.linearVelocity = Vector2.up * 2f;
             transform.position = Vector3.Lerp(transform.position, acornrb.position, 1f);
         }
         if (Input.GetButtonDown("Fire1") && isAttached)
@@ -30,7 +30,7 @@ public class Bubble : MonoBehaviour
         {
             isAttached = true;
             acornrb = collision.gameObject.GetComponent<Rigidbody2D>();
-            acornrb.gravityScale = -1f;
+            acornrb.gravityScale = 0f;
         }
     }
     void PopBubble()
