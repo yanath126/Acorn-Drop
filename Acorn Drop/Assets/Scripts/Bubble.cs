@@ -17,7 +17,7 @@ public class Bubble : MonoBehaviour
         if (isAttached && acornrb != null)
         {
             acornrb.AddForce(Vector2.up * floatForce * Time.deltaTime, ForceMode2D.Force);
-            transform.position = Vector3.Lerp(transform.position, acornrb.position, .1f);
+            transform.position = Vector3.Lerp(transform.position, acornrb.position, 1f);
         }
         if (Input.GetButtonDown("Fire1") && isAttached)
         {
@@ -30,7 +30,7 @@ public class Bubble : MonoBehaviour
         {
             isAttached = true;
             acornrb = collision.gameObject.GetComponent<Rigidbody2D>();
-            acornrb.gravityScale = 0f;
+            acornrb.gravityScale = -1f;
         }
     }
     void PopBubble()
