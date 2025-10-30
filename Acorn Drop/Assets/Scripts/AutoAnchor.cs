@@ -4,9 +4,10 @@ public class AutoAnchor : MonoBehaviour
 {
     [SerializeField] Transform vinePrefab;
     [SerializeField] int vineLength = 1;
-    [SerializeField] Vector2 acornAnchorOffset = new Vector2(0, 0.5f);
+    [SerializeField] Vector2 acornAnchorOffset = new Vector2(0, 0.1f);
     [SerializeField] Rigidbody2D previousVine;
-    [SerializeField] float vineHeight = 0.5f;
+    [SerializeField] float vineHeight = 0.3f;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +23,11 @@ public class AutoAnchor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Acorn")
         {
+            HingeJoint2D existingHinge = collision.gameObject.GetComponent<HingeJoint2D>();
+            if (existingHinge != null)
+            {
+                Destroy(existingHinge);
+            }
             previousVine = null;
             for (int i = 0; i < vineLength; i++)
             {
@@ -47,6 +53,7 @@ public class AutoAnchor : MonoBehaviour
                 previousVine = vinerb;
                 vine.SetParent(transform);
             }
+
                 HingeJoint2D newHinge = collision.gameObject.AddComponent<HingeJoint2D>();
                 newHinge.autoConfigureConnectedAnchor = false;
                 newHinge.connectedBody = previousVine;

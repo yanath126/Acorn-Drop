@@ -141,3 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoAnchor
   vinePrefab: {fileID: 4276333974492108499, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
+  vineLength: 1
+  acornAnchorOffset: {x: 0, y: 0.1}
+  previousVine: {fileID: 0}
+  vineHeight: 0.3
