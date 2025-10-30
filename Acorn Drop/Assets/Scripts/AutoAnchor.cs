@@ -23,15 +23,15 @@ public class AutoAnchor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Acorn")
         {
-            HingeJoint2D existingHinge = collision.gameObject.GetComponent<HingeJoint2D>();
-            if (existingHinge != null)
-            {
-                Destroy(existingHinge);
-            }
+        //     HingeJoint2D existingHinge = collision.gameObject.GetComponent<HingeJoint2D>();
+        //     if (existingHinge != null)
+        //     {
+        //         Destroy(existingHinge);
+        //     }
             previousVine = null;
             for (int i = 0; i < vineLength; i++)
             {
-                Transform vine = Instantiate(vinePrefab, transform.position, Quaternion.identity);
+                Transform vine = Instantiate(vinePrefab, transform.position - new Vector3(0, i* vineLength, 0), Quaternion.identity);
                 Rigidbody2D vinerb = vine.GetComponent<Rigidbody2D>();
 
                 HingeJoint2D hinge = vine.gameObject.AddComponent<HingeJoint2D>();
@@ -45,7 +45,7 @@ public class AutoAnchor : MonoBehaviour
                 else
                 {
                     hinge.connectedBody = previousVine;
-                    hinge.connectedAnchor = new Vector2(0, -vineHeight / 2f);
+                    hinge.connectedAnchor = new Vector2(0, -vineLength / 2f);
                 }
                 hinge.anchor = new Vector2(0, vineHeight / 2f);
                 hinge.enableCollision = false;
@@ -58,7 +58,7 @@ public class AutoAnchor : MonoBehaviour
                 newHinge.autoConfigureConnectedAnchor = false;
                 newHinge.connectedBody = previousVine;
                 newHinge.connectedAnchor = new Vector2(0, -vineHeight/2f);
-                newHinge.anchor = acornAnchorOffset;
+                newHinge.anchor = Vector2.zero;
                 newHinge.enableCollision = false;
             
         }
