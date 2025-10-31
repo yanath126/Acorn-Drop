@@ -127,6 +127,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 234293159}
     m_Modifications:
+    - target: {fileID: 874189097006827292, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4276333974492108499, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -185,11 +189,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_Name
-      value: Vine 1
+      value: Vine 4
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -276,6 +280,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1638734664}
     m_Modifications:
+    - target: {fileID: 874189097006827292, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4276333974492108499, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -334,11 +342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_Name
-      value: Vine 1
+      value: Vine 3
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -541,6 +549,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3324396515647210469, guid: a1703ae2ebbaa554baece09504b80ba3, type: 3}
       insertIndex: -1
       addedObject: {fileID: 275456676}
+    - targetCorrespondingSourceObject: {fileID: 3324396515647210469, guid: a1703ae2ebbaa554baece09504b80ba3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 275456677}
   m_SourcePrefab: {fileID: 100100000, guid: a1703ae2ebbaa554baece09504b80ba3, type: 3}
 --- !u!4 &275456673 stripped
 Transform:
@@ -569,6 +580,32 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.12}
   m_ConnectedAnchor: {x: 0, y: -0.110400006}
+  m_UseConnectedAnchor: 1
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
+--- !u!233 &275456677
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275456674}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 3
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0.12}
+  m_ConnectedAnchor: {x: -1.5, y: 2.224}
   m_UseConnectedAnchor: 1
   m_UseMotor: 0
   m_Motor:
@@ -850,6 +887,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1638734664}
     m_Modifications:
+    - target: {fileID: -1155418434543188611, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
+      propertyPath: vineParent
+      value: 
+      objectReference: {fileID: 1638734663}
     - target: {fileID: 1566277442012894894, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
       propertyPath: m_ConnectedAnchor.y
       value: -1.08
@@ -985,6 +1026,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 111928136}
     m_Modifications:
+    - target: {fileID: 874189097006827292, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4276333974492108499, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -1043,11 +1088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_Name
-      value: Vine 1
+      value: Vine 2
       objectReference: {fileID: 0}
     - target: {fileID: 7589944497699813482, guid: ed67e6c7c740d5e4a8610198b4ea545c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1328,6 +1373,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 234293159}
     m_Modifications:
+    - target: {fileID: -1155418434543188611, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
+      propertyPath: vineParent
+      value: 
+      objectReference: {fileID: 234293158}
     - target: {fileID: 1566277442012894894, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 1
@@ -1589,6 +1638,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 111928136}
     m_Modifications:
+    - target: {fileID: -1155418434543188611, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
+      propertyPath: vineParent
+      value: 
+      objectReference: {fileID: 111928135}
     - target: {fileID: 1566277442012894894, guid: 5d9cfdb2bef150644a2f05752d648abe, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -1

@@ -19,7 +19,9 @@ public class Vines : MonoBehaviour
         if (collision.gameObject.tag == "Cutter")
         {
             Destroy(GetComponent<HingeJoint2D>());
+            // Destroy(GetComponent<Rigidbody2D>());
             Destroy(gameObject);
+            Debug.Log("destroyed vine segment");
         }
     }
 }

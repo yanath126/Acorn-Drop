@@ -1,17 +1,21 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AutoAnchor : MonoBehaviour
 {
-    [SerializeField] Transform vinePrefab;
-    [SerializeField] int vineLength = 1;
-    [SerializeField] Vector2 acornAnchorOffset = new Vector2(0, 0.1f);
-    [SerializeField] Rigidbody2D previousVine;
+    [SerializeField] GameObject vineParent;
     [SerializeField] float vineHeight = 0.3f;
+
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        foreach (SpriteRenderer vinesr in vineParent.GetComponentsInChildren<SpriteRenderer>())
+        {
+            if(gameObject.tag == "Vine")
+                vinesr.enabled = false;
+        }
     }
 
     // Update is called once per frame
@@ -21,46 +25,48 @@ public class AutoAnchor : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (collision.gameObject.tag == "Acorn")
         {
-        //     HingeJoint2D existingHinge = collision.gameObject.GetComponent<HingeJoint2D>();
-        //     if (existingHinge != null)
-        //     {
-        //         Destroy(existingHinge);
-        //     }
-            previousVine = null;
-            for (int i = 0; i < vineLength; i++)
+            if (vineParent != null && !vineParent.activeSelf)
             {
-                Transform vine = Instantiate(vinePrefab, transform.position - new Vector3(0, i* vineLength, 0), Quaternion.identity);
-                Rigidbody2D vinerb = vine.GetComponent<Rigidbody2D>();
-
-                HingeJoint2D hinge = vine.gameObject.AddComponent<HingeJoint2D>();
-                hinge.autoConfigureConnectedAnchor = false;
-
-                if (i == 0)
+                vineParent.SetActive(true);
+                foreach (Transform child in vineParent.transform)
                 {
-                    hinge.connectedBody = null;
-                    hinge.connectedAnchor = transform.position;
+                    child.gameObject.SetActive(true);
                 }
-                else
-                {
-                    hinge.connectedBody = previousVine;
-                    hinge.connectedAnchor = new Vector2(0, -vineLength / 2f);
-                }
-                hinge.anchor = new Vector2(0, vineHeight / 2f);
-                hinge.enableCollision = false;
-
-                previousVine = vinerb;
-                vine.SetParent(transform);
             }
 
-                HingeJoint2D newHinge = collision.gameObject.AddComponent<HingeJoint2D>();
-                newHinge.autoConfigureConnectedAnchor = false;
-                newHinge.connectedBody = previousVine;
-                newHinge.connectedAnchor = new Vector2(0, -vineHeight/2f);
-                newHinge.anchor = Vector2.zero;
-                newHinge.enableCollision = false;
+            Rigidbody2D vineBottomrb = FindBottomVineSeg(vineParent);
+
+            HingeJoint2D[] hinges = collision.GetComponents<HingeJoint2D>();
+            foreach(HingeJoint2D hinge in hinges)
+            {
+                if (hinge.connectedBody == null)
+                {
+                    hinge.connectedBody = vineBottomrb;
+                    hinge.autoConfigureConnectedAnchor = false;
+                    hinge.connectedAnchor = new Vector2(0, -vineHeight / 2f);
+                    hinge.anchor = Vector2.zero;
+                    hinge.enableCollision = false;
+                    break;
+                }
+            }
+            vineParent.transform.SetParent(transform);
             
         }
+
+
+    }
+    
+    private Rigidbody2D FindBottomVineSeg(GameObject vine)
+    {
+        if (vine == null) return null;
+        Rigidbody2D[] bodies = vine.GetComponentsInChildren<Rigidbody2D>(true);
+
+        if (bodies.Length == 0) return null;
+
+        return bodies[bodies.Length - 1];
+
     }
 }
