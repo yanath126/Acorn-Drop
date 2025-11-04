@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class Bubble : MonoBehaviour
@@ -31,6 +32,14 @@ public class Bubble : MonoBehaviour
             isAttached = true;
             acornrb = collision.gameObject.GetComponent<Rigidbody2D>();
             acornrb.gravityScale = 0f;
+        }
+    }
+
+    void OnuseDown()
+    {
+        if (isAttached)
+        {
+            PopBubble();
         }
     }
     void PopBubble()
