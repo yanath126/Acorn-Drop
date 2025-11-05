@@ -19,21 +19,29 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool LevelLost = false;
     GameObject cutter;
+    [SerializeField] float timer = 3f;
 
     [SerializeField] TextMeshProUGUI butterflyText;
     [SerializeField] GameObject LevelLostText;
     [SerializeField] GameObject Canvas;
     [SerializeField] GameObject LevelLostScreen;
+    [SerializeField] GameObject InstructionsText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(Canvas);
+        DontDestroyOnLoad(butterflyText);
+        DontDestroyOnLoad(LevelLostText);
+        DontDestroyOnLoad(LevelLostScreen);
+        
     }
     void Start()
     {
-        
+        LevelLostText.SetActive(false);
+        LevelLostScreen.SetActive(false);
+        InstructionsText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -41,12 +49,21 @@ public class GameManager : MonoBehaviour
     {
         if(LevelLost == true)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            timer -= Time.deltaTime;
+        }
+        if(LevelLost == true && timer <=0)
+        {
             
+            //Debug.Log("Restart!");
+            //Debug.Break();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             // Debug.Log("Lost");
             // Debug.Break();
             LevelLost = false;
+            LevelLostText.SetActive(false);
+            LevelLostScreen.SetActive(false);
             butterflyScore = 0;
+            timer = 4;
             butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
@@ -79,7 +96,10 @@ public class GameManager : MonoBehaviour
             
             isDragging = false;
         }
-        
+        if (level == 4)
+        {
+            InstructionsText.SetActive(true);
+        }
     }
     void spawnCutter()
     {
@@ -101,6 +121,7 @@ public class GameManager : MonoBehaviour
         LevelLost = true;
         LevelLostText.SetActive(true);
         LevelLostScreen.SetActive(true);
+        
     }
 
     public void nextLevel(int number)
