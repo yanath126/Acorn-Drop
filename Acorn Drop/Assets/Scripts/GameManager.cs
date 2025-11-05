@@ -3,6 +3,7 @@ using Unity.Collections;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 public class GameManager : MonoBehaviour
@@ -18,11 +19,17 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool LevelLost = false;
     GameObject cutter;
+
+    [SerializeField] TextMeshProUGUI butterflyText;
+    [SerializeField] GameObject LevelLostText;
+    [SerializeField] GameObject Canvas;
+    [SerializeField] GameObject LevelLostScreen;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(Canvas);
     }
     void Start()
     {
@@ -35,9 +42,12 @@ public class GameManager : MonoBehaviour
         if(LevelLost == true)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            
             // Debug.Log("Lost");
             // Debug.Break();
             LevelLost = false;
+            butterflyScore = 0;
+            butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
         {
@@ -89,18 +99,22 @@ public class GameManager : MonoBehaviour
     public void restartLevel()
     {
         LevelLost = true;
-
+        LevelLostText.SetActive(true);
+        LevelLostScreen.SetActive(true);
     }
 
     public void nextLevel(int number)
     {
         level += number;
-        Debug.Log(level);
+        //Debug.Log(level);
+        butterflyScore = 0;
+        butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         SceneManager.LoadScene(level, LoadSceneMode.Single);
     }
     public void AddButterfly()
     {
         butterflyScore++;
+        butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
     }
 
 
