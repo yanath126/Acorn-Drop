@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] float timer = 3f;
+    [SerializeField] float timer = 3;
     [SerializeField] GameObject butterfly1;
     [SerializeField] GameObject butterfly2;
     [SerializeField] GameObject butterfly3;

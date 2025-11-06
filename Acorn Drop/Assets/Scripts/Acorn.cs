@@ -19,13 +19,14 @@ public class Acornn : MonoBehaviour
     {
         if (collision.gameObject.tag == "Totoro")
         {
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject);
+            
             GameManager.instance.nextLevel(1);
         }
         else if (collision.gameObject.tag == "Respawn")
         {
             //restart the game
-            Destroy(gameObject, 0.5f);
+            Destroy(gameObject);
             GameManager.instance.restartLevel();
         }
         else

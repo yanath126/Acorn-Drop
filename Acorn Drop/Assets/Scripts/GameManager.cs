@@ -4,6 +4,7 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEditor;
 
 
 public class GameManager : MonoBehaviour
@@ -20,33 +21,42 @@ public class GameManager : MonoBehaviour
     public bool LevelLost = false;
     GameObject cutter;
     [SerializeField] float timer = 3f;
+    [SerializeField] float butterflytimer = 5f;
 
     [SerializeField] TextMeshProUGUI butterflyText;
-    [SerializeField] GameObject LevelLostText;
+    [SerializeField] TextMeshProUGUI LevelLostText;
     [SerializeField] GameObject Canvas;
     [SerializeField] GameObject LevelLostScreen;
-    [SerializeField] GameObject InstructionsText;
+    [SerializeField] TextMeshProUGUI InstructionsText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(Canvas);
-        DontDestroyOnLoad(butterflyText);
-        DontDestroyOnLoad(LevelLostText);
+        // DontDestroyOnLoad(butterflyText);
+        // DontDestroyOnLoad(LevelLostText);
         DontDestroyOnLoad(LevelLostScreen);
         
     }
     void Start()
     {
-        LevelLostText.SetActive(false);
+        LevelLostText.gameObject.SetActive(false);
         LevelLostScreen.SetActive(false);
-        InstructionsText.SetActive(false);
+        InstructionsText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (level == 4)
+        {
+            level4Timer();
+            if (butterflytimer > 0)
+            {
+                butterflytimer -= Time.deltaTime;
+            }
+        }
         if(LevelLost == true)
         {
             timer -= Time.deltaTime;
@@ -60,10 +70,12 @@ public class GameManager : MonoBehaviour
             // Debug.Log("Lost");
             // Debug.Break();
             LevelLost = false;
-            LevelLostText.SetActive(false);
+            LevelLostText.gameObject.SetActive(false);
             LevelLostScreen.SetActive(false);
+            InstructionsText.gameObject.SetActive(false);
             butterflyScore = 0;
             timer = 4;
+            butterflytimer = 3;
             butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
@@ -96,10 +108,7 @@ public class GameManager : MonoBehaviour
             
             isDragging = false;
         }
-        if (level == 4)
-        {
-            InstructionsText.SetActive(true);
-        }
+        
     }
     void spawnCutter()
     {
@@ -119,7 +128,7 @@ public class GameManager : MonoBehaviour
     public void restartLevel()
     {
         LevelLost = true;
-        LevelLostText.SetActive(true);
+        LevelLostText.gameObject.SetActive(true);
         LevelLostScreen.SetActive(true);
         
     }
@@ -130,12 +139,27 @@ public class GameManager : MonoBehaviour
         //Debug.Log(level);
         butterflyScore = 0;
         butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
-        SceneManager.LoadScene(level, LoadSceneMode.Single);
+        InstructionsText.gameObject.SetActive(false);
+        if (level < 10)
+        {
+            SceneManager.LoadScene(level, LoadSceneMode.Single);
+        }
+        else
+        {
+            //end screen
+        }
+        
     }
     public void AddButterfly()
     {
         butterflyScore++;
         butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
+    }
+
+    public void level4Timer()
+    {
+        InstructionsText.gameObject.SetActive(true);
+        InstructionsText.text = "Collect all the butterflies before time runs out! Timer: " + (int)butterflytimer + "s";
     }
 
 
