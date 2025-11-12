@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
     public bool LevelLost = false;
     GameObject cutter;
     [SerializeField] float timer = 3f;
-    [SerializeField] float butterflytimer = 5f;
+    public float butterflytimer = 5f;
 
     [SerializeField] TextMeshProUGUI butterflyText;
     [SerializeField] TextMeshProUGUI LevelLostText;
     [SerializeField] GameObject Canvas;
     [SerializeField] GameObject LevelLostScreen;
     [SerializeField] TextMeshProUGUI InstructionsText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
             {
                 butterflytimer -= Time.deltaTime;
             }
+            
         }
         if(LevelLost == true)
         {
@@ -75,7 +77,7 @@ public class GameManager : MonoBehaviour
             InstructionsText.gameObject.SetActive(false);
             butterflyScore = 0;
             timer = 4;
-            butterflytimer = 3;
+            butterflytimer = 5;
             butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse

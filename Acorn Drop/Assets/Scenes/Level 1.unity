@@ -1845,7 +1845,7 @@ PrefabInstance:
       objectReference: {fileID: 1298423341}
     - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
       propertyPath: butterflytimer
-      value: 5.2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
       propertyPath: LevelLostScreen
