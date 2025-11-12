@@ -5,6 +5,7 @@ using Vector3 = UnityEngine.Vector3;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEditor;
+using System.Collections;
 
 
 public class GameManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     GameObject cutter;
     [SerializeField] float timer = 3f;
     public float butterflytimer = 5f;
+    bool sceneLoaded = false;
 
     [SerializeField] TextMeshProUGUI butterflyText;
     [SerializeField] TextMeshProUGUI LevelLostText;
@@ -45,12 +47,13 @@ public class GameManager : MonoBehaviour
         LevelLostText.gameObject.SetActive(false);
         LevelLostScreen.SetActive(false);
         InstructionsText.gameObject.SetActive(false);
+        StartCoroutine(WaitUntilSceneLoads());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (level == 4)
+        if (level == 4 && sceneLoaded == true)
         {
             level4Timer();
             if (butterflytimer > 0)
@@ -164,6 +167,10 @@ public class GameManager : MonoBehaviour
         InstructionsText.text = "Collect all the butterflies before time runs out! Timer: " + (int)butterflytimer + "s";
     }
 
-
+    IEnumerator WaitUntilSceneLoads()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        sceneLoaded = true;
+    }
 
 }
