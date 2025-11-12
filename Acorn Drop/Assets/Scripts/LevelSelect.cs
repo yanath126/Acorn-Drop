@@ -16,6 +16,7 @@ public class LevelSelect : MonoBehaviour
     }
     public void LoadLevel(int level)
     {
+        GameManager.instance.isPlaying = true;
         SceneManager.LoadScene(level);
     }
 }

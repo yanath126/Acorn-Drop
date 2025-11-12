@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEditor;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -24,12 +25,27 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timer = 3f;
     public float butterflytimer = 5f;
     bool sceneLoaded = false;
+    public bool isPlaying = false;
+    bool levelSelect = false;
+    
 
     [SerializeField] TextMeshProUGUI butterflyText;
     [SerializeField] TextMeshProUGUI LevelLostText;
     [SerializeField] GameObject Canvas;
     [SerializeField] GameObject LevelLostScreen;
     [SerializeField] TextMeshProUGUI InstructionsText;
+    [SerializeField] TextMeshProUGUI AcornDropText;
+    [SerializeField] Button button1;
+    [SerializeField] Button button2;
+    [SerializeField] Button button3;
+    [SerializeField] Button button4;
+    [SerializeField] Button button5;
+    [SerializeField] Button button6;
+    [SerializeField] Button button7;
+    [SerializeField] Button button8;
+    [SerializeField] Button button9;
+    [SerializeField] Button button10;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -47,12 +63,22 @@ public class GameManager : MonoBehaviour
         LevelLostText.gameObject.SetActive(false);
         LevelLostScreen.SetActive(false);
         InstructionsText.gameObject.SetActive(false);
+        butterflyText.gameObject.SetActive(false);
         StartCoroutine(WaitUntilSceneLoads());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isPlaying == true && level > 0)
+        {
+            butterflyText.gameObject.SetActive(true);
+            StopLevelSelect();
+        }
+        else
+        {
+            butterflyText.gameObject.SetActive(false);
+        }
         if (level == 4 && sceneLoaded == true)
         {
             level4Timer();
@@ -151,7 +177,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //end screen
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
         
     }
@@ -171,6 +197,22 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         sceneLoaded = true;
+    }
+
+    public void StopLevelSelect()
+    {
+        Destroy(button1.gameObject);
+        Destroy(button2.gameObject);
+        Destroy(button3.gameObject);
+        Destroy(button4.gameObject);
+        Destroy(button5.gameObject);
+        Destroy(button6.gameObject);
+        Destroy(button7.gameObject);
+        Destroy(button8.gameObject);
+        Destroy(button9.gameObject);
+        Destroy(button10.gameObject);
+        Destroy(AcornDropText.gameObject);
+
     }
 
 }
