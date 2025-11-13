@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7615931277116440913}
   - component: {fileID: 9061702175323192232}
   - component: {fileID: 4765046224426578716}
-  - component: {fileID: 3550473002773874755}
   - component: {fileID: 3206540376321077707}
+  - component: {fileID: 2322575775797440101}
   m_Layer: 0
   m_Name: Acorn
   m_TagString: Acorn
@@ -120,8 +120,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &3550473002773874755
-BoxCollider2D:
+--- !u!114 &3206540376321077707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3324396515647210469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809b45b332f23ba4cbf33b6cff35de37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Acornn
+  manager: {fileID: 0}
+--- !u!70 &2322575775797440101
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -154,28 +167,6 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.22, y: 0.32}
-    newSize: {x: 0.22, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.22, y: 0.32}
-  m_EdgeRadius: 0
---- !u!114 &3206540376321077707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3324396515647210469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 809b45b332f23ba4cbf33b6cff35de37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Acornn
-  manager: {fileID: 0}
+  m_Offset: {x: 0.0009963661, y: -0.011208852}
+  m_Size: {x: 0.172176, y: 0.22783914}
+  m_Direction: 0

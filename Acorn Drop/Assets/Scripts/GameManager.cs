@@ -71,12 +71,16 @@ public class GameManager : MonoBehaviour
         }
         if (level == 5 && sceneLoaded == true)
         {
-            level4Timer();
+            level5Timer();
             if (butterflytimer > 0)
             {
                 butterflytimer -= Time.deltaTime;
             }
-            
+
+        }
+        if (level == 6 && sceneLoaded == true)
+        {
+            level6Instructions();
         }
         if(LevelLost == true)
         {
@@ -177,10 +181,15 @@ public class GameManager : MonoBehaviour
         butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
     }
 
-    public void level4Timer()
+    public void level5Timer()
     {
         InstructionsText.gameObject.SetActive(true);
         InstructionsText.text = "Collect all the butterflies before time runs out! Timer: " + (int)butterflytimer + "s";
+    }
+    public void level6Instructions()
+    {
+        InstructionsText.gameObject.SetActive(true);
+        InstructionsText.text = "Keep the acorn from getting infected..";
     }
 
     IEnumerator WaitUntilSceneLoads()
