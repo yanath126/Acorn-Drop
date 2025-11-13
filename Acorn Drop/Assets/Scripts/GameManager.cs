@@ -25,8 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float timer = 3f;
     public float butterflytimer = 5f;
     bool sceneLoaded = false;
-    public bool isPlaying = false;
-    bool levelSelect = false;
+    public bool levelSelect = true;
     
 
     [SerializeField] TextMeshProUGUI butterflyText;
@@ -34,17 +33,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject Canvas;
     [SerializeField] GameObject LevelLostScreen;
     [SerializeField] TextMeshProUGUI InstructionsText;
-    [SerializeField] TextMeshProUGUI AcornDropText;
-    [SerializeField] Button button1;
-    [SerializeField] Button button2;
-    [SerializeField] Button button3;
-    [SerializeField] Button button4;
-    [SerializeField] Button button5;
-    [SerializeField] Button button6;
-    [SerializeField] Button button7;
-    [SerializeField] Button button8;
-    [SerializeField] Button button9;
-    [SerializeField] Button button10;
+    [SerializeField] GameObject LevelSelection;
+
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -70,16 +60,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlaying == true && level > 0)
+        if (level >=1 && levelSelect == false)
         {
+            LevelSelection.gameObject.SetActive(false);
             butterflyText.gameObject.SetActive(true);
-            StopLevelSelect();
         }
         else
         {
             butterflyText.gameObject.SetActive(false);
         }
-        if (level == 4 && sceneLoaded == true)
+        if (level == 5 && sceneLoaded == true)
         {
             level4Timer();
             if (butterflytimer > 0)
@@ -199,20 +189,13 @@ public class GameManager : MonoBehaviour
         sceneLoaded = true;
     }
 
-    public void StopLevelSelect()
+    public void hideLevelSelection()
     {
-        Destroy(button1.gameObject);
-        Destroy(button2.gameObject);
-        Destroy(button3.gameObject);
-        Destroy(button4.gameObject);
-        Destroy(button5.gameObject);
-        Destroy(button6.gameObject);
-        Destroy(button7.gameObject);
-        Destroy(button8.gameObject);
-        Destroy(button9.gameObject);
-        Destroy(button10.gameObject);
-        Destroy(AcornDropText.gameObject);
-
+        LevelSelection.SetActive(false);
     }
 
+    public void SetLevel(int levelNumber)
+    {
+        level = levelNumber;
+    }
 }

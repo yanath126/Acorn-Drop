@@ -728,6 +728,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cc5fbc4048a82f4f94db112536c172f, type: 3}
+--- !u!1 &3507378967052105089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 364171183952397002, guid: 4cc5fbc4048a82f4f94db112536c172f, type: 3}
+  m_PrefabInstance: {fileID: 3507378967052105088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3507378967052105090 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8744154637912944087, guid: 4cc5fbc4048a82f4f94db112536c172f, type: 3}
@@ -904,6 +909,10 @@ PrefabInstance:
       propertyPath: butterflyText
       value: 
       objectReference: {fileID: 1298423341}
+    - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
+      propertyPath: LevelSelection
+      value: 
+      objectReference: {fileID: 3507378967052105089}
     - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
       propertyPath: LevelLostScreen
       value: 

@@ -16,7 +16,9 @@ public class LevelSelect : MonoBehaviour
     }
     public void LoadLevel(int level)
     {
-        GameManager.instance.isPlaying = true;
+        GameManager.instance.levelSelect = false;
+        GameManager.instance.hideLevelSelection();
+        GameManager.instance.SetLevel(level);
         SceneManager.LoadScene(level);
     }
 }
