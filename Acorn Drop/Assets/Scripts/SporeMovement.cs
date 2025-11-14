@@ -3,8 +3,9 @@ using UnityEngine;
 public class SporeMovement : MonoBehaviour
 {
 
-    [SerializeField] float speed = 2f;
+    [SerializeField] float speed = .25f;
     [SerializeField] float distance = 3f;
+    [SerializeField] float ApproachDistance = 1f;
     [SerializeField] Transform RightSpore;
     [SerializeField] Transform LeftSpore;
 
@@ -20,9 +21,15 @@ public class SporeMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float movement = Mathf.PingPong(Time.deltaTime * speed, 1f);
+        float movement = Mathf.PingPong(Time.time * speed, 1f);
+        
+
+
         Vector3 LeftOffset = new Vector3(movement*distance, movement*distance, 0);
-        Vector3 RightOffset = new Vector3(-movement*distance, -movement*distance, 0);
+        Vector3 RightOffset = new Vector3(-movement*distance, movement*distance, 0);
+
+        LeftSpore.position = startPosLeft + LeftOffset;
+        RightSpore.position = startPosRight + RightOffset;
     }
 
 }
