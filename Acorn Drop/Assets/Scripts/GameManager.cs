@@ -172,6 +172,8 @@ public class GameManager : MonoBehaviour
         else
         {
             SceneManager.LoadScene(0, LoadSceneMode.Single);
+            InstructionsText.gameObject.SetActive(false);
+            butterflyText.gameObject.SetActive(false);
         }
         
     }
