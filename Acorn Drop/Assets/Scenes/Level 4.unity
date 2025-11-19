@@ -257,6 +257,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3324396515647210469, guid: a1703ae2ebbaa554baece09504b80ba3, type: 3}
   m_PrefabInstance: {fileID: 275456672}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &275456675 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4765046224426578716, guid: a1703ae2ebbaa554baece09504b80ba3, type: 3}
+  m_PrefabInstance: {fileID: 275456672}
+  m_PrefabAsset: {fileID: 0}
 --- !u!233 &275456676
 HingeJoint2D:
   m_ObjectHideFlags: 0
@@ -878,6 +883,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 716182738234381535, guid: 2ac5c50896e44c4458ee6298f1a3d9f3, type: 3}
+      propertyPath: Acorn
+      value: 
+      objectReference: {fileID: 275456674}
+    - target: {fileID: 716182738234381535, guid: 2ac5c50896e44c4458ee6298f1a3d9f3, type: 3}
+      propertyPath: AcornRB
+      value: 
+      objectReference: {fileID: 275456675}
+    - target: {fileID: 716182738234381535, guid: 2ac5c50896e44c4458ee6298f1a3d9f3, type: 3}
+      propertyPath: acornrb
+      value: 
+      objectReference: {fileID: 275456675}
     - target: {fileID: 1093806124192006392, guid: 2ac5c50896e44c4458ee6298f1a3d9f3, type: 3}
       propertyPath: m_Name
       value: Bubble

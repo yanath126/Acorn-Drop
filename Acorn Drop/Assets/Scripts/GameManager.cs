@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         butterflyScore = 0;
         butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
         InstructionsText.gameObject.SetActive(false);
-        if (level < 10)
+        if (level < 11)
         {
             SceneManager.LoadScene(level, LoadSceneMode.Single);
         }

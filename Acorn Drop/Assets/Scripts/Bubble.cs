@@ -5,7 +5,8 @@ public class Bubble : MonoBehaviour
 {
     [SerializeField] float floatForce = 2f;
     bool isAttached = false;
-    [SerializeField] Rigidbody2D acornrb;
+    [SerializeField] GameObject Acorn;
+    [SerializeField] Rigidbody2D AcornRB;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,14 +16,10 @@ public class Bubble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttached && acornrb != null)
+        if (isAttached && Acorn.GetComponent<Rigidbody2D>() != null)
         {
-            acornrb.linearVelocity = Vector2.up * floatForce;
-            transform.position = Vector3.Lerp(transform.position, acornrb.position, 1f);
-        }
-        if (Input.GetButtonDown("Fire1") && isAttached)
-        {
-            PopBubble();
+            Acorn.GetComponent<Rigidbody2D>().linearVelocity = Vector2.up * floatForce;
+            transform.position = Vector3.Lerp(transform.position, Acorn.GetComponent<Rigidbody2D>().position, 1f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,12 +27,12 @@ public class Bubble : MonoBehaviour
         if (collision.gameObject.tag == "Acorn" && !isAttached)
         {
             isAttached = true;
-            acornrb = collision.gameObject.GetComponent<Rigidbody2D>();
-            acornrb.gravityScale = 0f;
+            AcornRB = collision.gameObject.GetComponent<Rigidbody2D>();
+            Acorn.GetComponent<Rigidbody2D>().gravityScale = 0f;
         }
     }
 
-    void OnuseDown()
+    void OnMouseDown()
     {
         if (isAttached)
         {
@@ -44,9 +41,9 @@ public class Bubble : MonoBehaviour
     }
     void PopBubble()
     {
-        if (acornrb != null)
+        if (Acorn.GetComponent<Rigidbody2D>() != null)
         {
-            acornrb.gravityScale = 1f;
+            Acorn.GetComponent<Rigidbody2D>().gravityScale = 1f;
         }
         Destroy(gameObject);
     }
