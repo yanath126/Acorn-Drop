@@ -7,6 +7,7 @@ using TMPro;
 using UnityEditor;
 using System.Collections;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class GameManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject LevelLostScreen;
     [SerializeField] TextMeshProUGUI InstructionsText;
     [SerializeField] GameObject LevelSelection;
+    [SerializeField] GameObject levelSelectObject;
+    [SerializeField] GameObject BackButton;
 
 
     
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         // DontDestroyOnLoad(butterflyText);
         // DontDestroyOnLoad(LevelLostText);
         DontDestroyOnLoad(LevelLostScreen);
+        DontDestroyOnLoad(levelSelectObject);
         
     }
     void Start()
@@ -64,10 +68,12 @@ public class GameManager : MonoBehaviour
         {
             LevelSelection.gameObject.SetActive(false);
             butterflyText.gameObject.SetActive(true);
+            BackButton.gameObject.SetActive(true);
         }
         else
         {
             butterflyText.gameObject.SetActive(false);
+            BackButton.gameObject.SetActive(false);
         }
         if (level == 5 && sceneLoaded == true)
         {
@@ -155,7 +161,7 @@ public class GameManager : MonoBehaviour
         LevelLost = true;
         LevelLostText.gameObject.SetActive(true);
         LevelLostScreen.SetActive(true);
-        
+        BackButton.gameObject.SetActive(false);
     }
 
     public void nextLevel(int number)
@@ -169,9 +175,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(level, LoadSceneMode.Single);
         }
-        else
+        else if (level == 11)
         {
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            LevelLostScreen.SetActive(true);
+            LevelLostText.text = "Congrats! You finished the game :) Thank you for playing.";
+            LevelLostText.gameObject.SetActive(true);
             InstructionsText.gameObject.SetActive(false);
             butterflyText.gameObject.SetActive(false);
         }

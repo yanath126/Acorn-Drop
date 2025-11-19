@@ -19,6 +19,8 @@ public class LevelSelect : MonoBehaviour
         GameManager.instance.levelSelect = false;
         GameManager.instance.hideLevelSelection();
         GameManager.instance.SetLevel(level);
+        Debug.Log("Button clicked" + level);
+        Debug.Break();
         SceneManager.LoadScene(level);
     }
 }
