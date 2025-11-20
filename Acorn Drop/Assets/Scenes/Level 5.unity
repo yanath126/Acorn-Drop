@@ -1324,10 +1324,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda9e3aa01185134c83da60f0b9d662b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  timer: 5
+  gameManager: {fileID: 0}
   butterfly1: {fileID: 1805593487}
   butterfly2: {fileID: 828892698}
   butterfly3: {fileID: 1199055423}
+  timer: 5
 --- !u!4 &1334926725
 Transform:
   m_ObjectHideFlags: 0
@@ -1931,11 +1932,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3069035652494080761, guid: c37b0b06406dd294da32088f71b79d8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 3069035652494080761, guid: c37b0b06406dd294da32088f71b79d8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -1.81
       objectReference: {fileID: 0}
     - target: {fileID: 3069035652494080761, guid: c37b0b06406dd294da32088f71b79d8e, type: 3}
       propertyPath: m_LocalPosition.z

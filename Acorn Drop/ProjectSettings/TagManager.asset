@@ -9,6 +9,7 @@ TagManager:
   - Acorn
   - Bubble
   - Vine
+  - Persistent
   layers:
   - Default
   - TransparentFX

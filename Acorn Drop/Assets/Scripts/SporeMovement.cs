@@ -5,7 +5,6 @@ public class SporeMovement : MonoBehaviour
 
     [SerializeField] float speed = .25f;
     [SerializeField] float distance = 3f;
-    [SerializeField] float ApproachDistance = 1f;
     [SerializeField] Transform RightSpore;
     [SerializeField] Transform LeftSpore;
 

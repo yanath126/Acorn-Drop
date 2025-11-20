@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public float butterflytimer = 5f;
     bool sceneLoaded = false;
     public bool levelSelect = true;
+    bool isGameOver = false;
     
 
     [SerializeField] TextMeshProUGUI butterflyText;
@@ -43,13 +44,21 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+                
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(Canvas);
         // DontDestroyOnLoad(butterflyText);
         // DontDestroyOnLoad(LevelLostText);
         DontDestroyOnLoad(LevelLostScreen);
         DontDestroyOnLoad(levelSelectObject);
+        
+
         
     }
     void Start()
@@ -69,6 +78,7 @@ public class GameManager : MonoBehaviour
             LevelSelection.gameObject.SetActive(false);
             butterflyText.gameObject.SetActive(true);
             BackButton.gameObject.SetActive(true);
+            
         }
         else
         {
@@ -82,16 +92,24 @@ public class GameManager : MonoBehaviour
             {
                 butterflytimer -= Time.deltaTime;
             }
-
         }
-        if (level == 6 && sceneLoaded == true)
+        
+        else if (level == 6 && sceneLoaded == true)
         {
             level6Instructions();
         }
-        if(LevelLost == true)
+        else if (level == 9 && sceneLoaded == true)
         {
-            timer -= Time.deltaTime;
+            level9Instructions();
         }
+        else
+        {
+            InstructionsText.gameObject.SetActive(false);
+        }
+        if (LevelLost == true)
+            {
+                timer -= Time.deltaTime;
+            }
         if(LevelLost == true && timer <=0)
         {
             
@@ -108,6 +126,18 @@ public class GameManager : MonoBehaviour
             timer = 4;
             butterflytimer = 5;
             butterflyText.text = "Butterflies Collected: " + butterflyScore + "/3";
+        }
+        if (isGameOver == true)
+        {
+            timer -= Time.deltaTime;
+        }
+        if (isGameOver == true && timer <= 0)
+        {
+            isGameOver = false;
+            LevelLostText.gameObject.SetActive(false);
+            LevelLostScreen.SetActive(false);
+            timer = 4;
+            gameOver();
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
         {
@@ -159,6 +189,7 @@ public class GameManager : MonoBehaviour
     public void restartLevel()
     {
         LevelLost = true;
+        LevelLostText.text = "Uh oh! Try again..";
         LevelLostText.gameObject.SetActive(true);
         LevelLostScreen.SetActive(true);
         BackButton.gameObject.SetActive(false);
@@ -175,13 +206,16 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(level, LoadSceneMode.Single);
         }
-        else if (level == 11)
+        else
         {
+            isGameOver = true;
             LevelLostScreen.SetActive(true);
             LevelLostText.text = "Congrats! You finished the game :) Thank you for playing.";
             LevelLostText.gameObject.SetActive(true);
             InstructionsText.gameObject.SetActive(false);
             butterflyText.gameObject.SetActive(false);
+            BackButton.gameObject.SetActive(false);
+            level = 0;
         }
         
     }
@@ -202,6 +236,12 @@ public class GameManager : MonoBehaviour
         InstructionsText.text = "Keep the acorn from getting infected..";
     }
 
+    public void level9Instructions()
+    {
+        InstructionsText.gameObject.SetActive(true);
+        InstructionsText.text = "Click on the shells to blow air and move the acorn.";
+    }
+
     IEnumerator WaitUntilSceneLoads()
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -216,5 +256,12 @@ public class GameManager : MonoBehaviour
     public void SetLevel(int levelNumber)
     {
         level = levelNumber;
+    }
+
+    public void gameOver()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        BackButton.gameObject.SetActive(false);
+        butterflyText.gameObject.SetActive(false);
     }
 }

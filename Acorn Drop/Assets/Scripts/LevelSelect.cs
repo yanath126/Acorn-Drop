@@ -20,7 +20,7 @@ public class LevelSelect : MonoBehaviour
         GameManager.instance.hideLevelSelection();
         GameManager.instance.SetLevel(level);
         Debug.Log("Button clicked" + level);
-        Debug.Break();
+        //Debug.Break();
         SceneManager.LoadScene(level);
     }
 }

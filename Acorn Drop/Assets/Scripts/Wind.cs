@@ -26,8 +26,10 @@ public class Wind : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("cushion clicked");
-        PushAcorn();
+        if (acornInFront) 
+        { 
+            PushAcorn(); 
+        }
     }
 
     void PushAcorn()
