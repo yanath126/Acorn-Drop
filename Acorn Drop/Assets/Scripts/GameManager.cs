@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     bool sceneLoaded = false;
     public bool levelSelect = true;
     bool isGameOver = false;
+   
     
 
     [SerializeField] TextMeshProUGUI butterflyText;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject LevelSelection;
     [SerializeField] GameObject levelSelectObject;
     [SerializeField] GameObject BackButton;
+    [SerializeField] AudioSource BackgroundMusic;
+    
 
 
     
@@ -58,6 +61,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(LevelLostScreen);
         DontDestroyOnLoad(levelSelectObject);
         
+        if(!BackgroundMusic.isPlaying)
+        {
+            BackgroundMusic.Play();
+        }
 
         
     }
@@ -68,6 +75,7 @@ public class GameManager : MonoBehaviour
         InstructionsText.gameObject.SetActive(false);
         butterflyText.gameObject.SetActive(false);
         StartCoroutine(WaitUntilSceneLoads());
+
     }
 
     // Update is called once per frame
