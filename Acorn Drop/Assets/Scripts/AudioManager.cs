@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [SerializeField] AudioSource BackgroundMusic;
+    [SerializeField] AudioSource MusicSource;
     [SerializeField] AudioSource SFXSource;
 
     public AudioClip background;
@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        MusicSource.clip = background;
+        MusicSource.Play();
     }
 
     // Update is called once per frame
