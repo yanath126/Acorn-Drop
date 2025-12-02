@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
+    
     [SerializeField] float floatForce = 2f;
     bool isAttached = false;
     [SerializeField] GameObject Acorn;
@@ -37,6 +38,7 @@ public class Bubble : MonoBehaviour
         if (isAttached)
         {
             PopBubble();
+            AudioManager.instance.PlaySFX(AudioManager.instance.pop);
         }
     }
     void PopBubble()
