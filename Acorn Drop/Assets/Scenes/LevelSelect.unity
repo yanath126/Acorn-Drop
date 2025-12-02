@@ -856,6 +856,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3507378967052105089}
     - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
+      propertyPath: BackgroundMusic
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6283527334310810953, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
       propertyPath: LevelLostScreen
       value: 
       objectReference: {fileID: 816160790}
@@ -913,14 +917,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3800871068444806832, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8454817695278250736}
+      addedObject: {fileID: 8454817695278250739}
   m_SourcePrefab: {fileID: 100100000, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
 --- !u!1 &8454817695278250735 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3800871068444806832, guid: 031818786796cff48bd8bf6dc3c43678, type: 3}
   m_PrefabInstance: {fileID: 8454817695278250734}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &8454817695278250736
+--- !u!82 &8454817695278250739
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -933,13 +937,13 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: bea93a38b71b64b598109b3a3b1a0048, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.647
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 190
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

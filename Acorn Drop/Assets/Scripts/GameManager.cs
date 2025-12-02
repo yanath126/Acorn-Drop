@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject LevelSelection;
     [SerializeField] GameObject levelSelectObject;
     [SerializeField] GameObject BackButton;
-    [SerializeField] AudioSource BackgroundMusic;
     
 
 
@@ -60,10 +59,9 @@ public class GameManager : MonoBehaviour
         // DontDestroyOnLoad(LevelLostText);
         DontDestroyOnLoad(LevelLostScreen);
         DontDestroyOnLoad(levelSelectObject);
-        
-        if(!BackgroundMusic.isPlaying)
+        if (!GetComponent<AudioSource>().isPlaying)
         {
-            BackgroundMusic.Play();
+            GetComponent<AudioSource>().Play();
         }
 
         
