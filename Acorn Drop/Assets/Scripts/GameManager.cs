@@ -59,10 +59,6 @@ public class GameManager : MonoBehaviour
         // DontDestroyOnLoad(LevelLostText);
         DontDestroyOnLoad(LevelLostScreen);
         DontDestroyOnLoad(levelSelectObject);
-        if (!GetComponent<AudioSource>().isPlaying)
-        {
-            GetComponent<AudioSource>().Play();
-        }
 
         
     }
