@@ -24,6 +24,9 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,4 +39,6 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(clip);
     }
+
+    
 }

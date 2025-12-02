@@ -37,7 +37,8 @@ public class Wind : MonoBehaviour
     {
         Vector2 direction = transform.right.normalized;
         Acorn.GetComponent<Rigidbody2D>().AddForce(direction * pushForce, ForceMode2D.Impulse);
-        
+        AudioManager.instance.PlaySFX(AudioManager.instance.whoosh);
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

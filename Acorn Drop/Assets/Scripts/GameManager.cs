@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1")) //after mouse click releases
         {
-            
+            //Debug.Break();
             isDragging = false;
         }
         
@@ -192,6 +192,7 @@ public class GameManager : MonoBehaviour
     {
         LevelLost = true;
         LevelLostText.text = "Uh oh! Try again..";
+        AudioManager.instance.PlaySFX(AudioManager.instance.death);
         LevelLostText.gameObject.SetActive(true);
         LevelLostScreen.SetActive(true);
         BackButton.gameObject.SetActive(false);

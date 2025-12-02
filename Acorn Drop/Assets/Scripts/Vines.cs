@@ -20,6 +20,7 @@ public class Vines : MonoBehaviour
         {
             Destroy(GetComponent<HingeJoint2D>());
             Destroy(gameObject);
+            AudioManager.instance.PlaySFX(AudioManager.instance.cut);
             //Debug.Log("destroyed vine segment");
         }
     }
