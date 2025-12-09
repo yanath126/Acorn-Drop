@@ -20,7 +20,7 @@ public class Bubble : MonoBehaviour
         if (isAttached && Acorn.GetComponent<Rigidbody2D>() != null)
         {
             Acorn.GetComponent<Rigidbody2D>().linearVelocity = Vector2.up * floatForce;
-            transform.position = Vector3.Lerp(transform.position, Acorn.GetComponent<Rigidbody2D>().position, 1f);
+            transform.position = Vector3.Lerp(transform.position, Acorn.GetComponent<Rigidbody2D>().position, 1f); // referenced from 2d tutorial
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

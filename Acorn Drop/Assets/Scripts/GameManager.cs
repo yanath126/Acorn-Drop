@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance != null && instance != this) //TA office hours help
         {
             Destroy(gameObject);
             return;
@@ -143,10 +143,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1")) // when player clicks mouse
         {
-            ImousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            //transform.position = new Vector3(ImousePosition.x, ImousePosition.y, 0);
-            //Debug.Log("Is Clicking");
+            ImousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //referenced from 2d tutorial
             isDragging = true;
 
             spawnCutter();
@@ -156,14 +153,9 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButton("Fire1") && isDragging) // when holding down the mouse, player begins to cut the vine
         {
-            Vector3 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 endPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); //referenced from 2d tutorial
             stretchCutter(ImousePosition, endPosition);
-            //transform.position = new Vector3(ImousePosition.x, ImousePosition.y, 0);
-
-            //Debug.Log("Dragging");
-            //check for a swipe and destroy the vines
             
-            // ImousePosition = currentMousePosition;
         }
 
         if (Input.GetButtonUp("Fire1")) //after mouse click releases
@@ -175,17 +167,16 @@ public class GameManager : MonoBehaviour
     }
     void spawnCutter()
     {
-        cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity);
-        
+        cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity); //referenced from 2d tutorial
         
     }
 
-    void stretchCutter(Vector3 start, Vector3 end)
+    void stretchCutter(Vector3 start, Vector3 end) 
     {
         EdgeCollider2D edge = cutter.GetComponent<EdgeCollider2D>();
         float absoluteOffsetx = (end.x - ImousePosition.x);
         float absoluteOffsety = (end.y - ImousePosition.y);
-        edge.points = new Vector2[] { new Vector2(0,0), new Vector2(absoluteOffsetx, absoluteOffsety)};
+        edge.points = new Vector2[] { new Vector2(0,0), new Vector2(absoluteOffsetx, absoluteOffsety)}; //TA Help
     }
 
     public void restartLevel()
