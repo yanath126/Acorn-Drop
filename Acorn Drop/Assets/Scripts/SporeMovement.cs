@@ -22,8 +22,6 @@ public class SporeMovement : MonoBehaviour
     {
         float movement = Mathf.PingPong(Time.time * speed, 1f);
         
-
-
         Vector3 LeftOffset = new Vector3(movement*distance, movement*distance, 0);
         Vector3 RightOffset = new Vector3(-movement*distance, movement*distance, 0);
 

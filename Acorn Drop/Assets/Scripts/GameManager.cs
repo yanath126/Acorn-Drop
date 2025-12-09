@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        if (instance != null && instance != this) //TA office hours help
+        if (instance != null && instance != this) //line 49-54 TA office hours help
         {
             Destroy(gameObject);
             return;
@@ -171,12 +171,12 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void stretchCutter(Vector3 start, Vector3 end) 
+    void stretchCutter(Vector3 start, Vector3 end) //line 174-179 TA help
     {
         EdgeCollider2D edge = cutter.GetComponent<EdgeCollider2D>();
         float absoluteOffsetx = (end.x - ImousePosition.x);
         float absoluteOffsety = (end.y - ImousePosition.y);
-        edge.points = new Vector2[] { new Vector2(0,0), new Vector2(absoluteOffsetx, absoluteOffsety)}; //TA Help
+        edge.points = new Vector2[] { new Vector2(0,0), new Vector2(absoluteOffsetx, absoluteOffsety)}; 
     }
 
     public void restartLevel()
@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviour
         InstructionsText.text = "Click on the shells to blow air and move the acorn.";
     }
 
-    IEnumerator WaitUntilSceneLoads()
+    IEnumerator WaitUntilSceneLoads() //got idea from Classmate (casey)
     {
         yield return new WaitForSecondsRealtime(1f);
         sceneLoaded = true;

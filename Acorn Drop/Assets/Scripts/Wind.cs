@@ -36,7 +36,7 @@ public class Wind : MonoBehaviour
     void PushAcorn()
     {
         Vector2 direction = transform.right.normalized;
-        Acorn.GetComponent<Rigidbody2D>().AddForce(direction * pushForce, ForceMode2D.Impulse);
+        Acorn.GetComponent<Rigidbody2D>().AddForce(direction * pushForce, ForceMode2D.Impulse); 
         AudioManager.instance.PlaySFX(AudioManager.instance.whoosh);
 
     }
