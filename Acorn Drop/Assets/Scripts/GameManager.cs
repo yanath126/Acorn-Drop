@@ -116,10 +116,10 @@ public class GameManager : MonoBehaviour
         {
             
             //Debug.Log("Restart!");
-            //Debug.Break();
+            
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             // Debug.Log("Lost");
-            // Debug.Break();
+            
             LevelLost = false;
             LevelLostText.gameObject.SetActive(false);
             LevelLostScreen.SetActive(false);
@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
 
             spawnCutter();
             Debug.Log(ImousePosition);
-            //Debug.Break();
+            
         }
 
         if (Input.GetButton("Fire1") && isDragging) // when holding down the mouse, player begins to cut the vine
@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1")) //after mouse click releases
         {
-            //Debug.Break();
+            
             isDragging = false;
         }
         
@@ -177,7 +177,7 @@ public class GameManager : MonoBehaviour
     {
         cutter = Instantiate(cutterPrefab, new Vector3(ImousePosition.x, ImousePosition.y, 0), Quaternion.identity);
         
-        //Debug.Break();
+        
     }
 
     void stretchCutter(Vector3 start, Vector3 end)
